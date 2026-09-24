@@ -104,14 +104,40 @@ static void SendVlcPacket (Ptr<VlcTxNetDevice> tx) {
 
 }
 
-static void PrintVlcMetrics (Ptr<VlcRxNetDevice> rx) {
+static void ForwardPacketsFromRis (Ptr<VlcRxNetDevice> risReceiver, Ptr<VlcTxNetDevice> risTransmitter) {
+  static uint32_t forwardedBytes = 0; // esse static garante que não vai virar 0 novamente
+  const uint32_t receivedBytes = risReceiver->ComputeGoodPut ();
+
+  while (forwardedBytes + 512 <= receivedBytes) // se receber mais um envia
+    {
+      Ptr<Packet> packet = Create<Packet> (512);
+
+      // 100 ms aproximam o atraso de chegada usado pelo vlcnew;
+      // 1 ms representa o processamento do repetidor.
+      Simulator::Schedule (MilliSeconds (101),
+                           &VlcTxNetDevice::EnqueueDataPacket,
+                           risTransmitter, packet);
+
+      forwardedBytes += packet->GetSize ();
+
+      std::cout << "t=" << Simulator::Now ().GetSeconds ()
+                << " RIS encaminhou 512 bytes" << std::endl;
+    }
+
+
+  Simulator::Schedule (MilliSeconds (10), &ForwardPacketsFromRis,
+                        risReceiver, risTransmitter);
+}
+
+static void PrintVlcMetrics (Ptr<VlcRxNetDevice> rx, std::string receiverName) {
     std::cout << "t=" << Simulator::Now ().GetSeconds ()
-            << " goodput acumulado="
+            << " goodput acumulado em " << receiverName << " = "
             << rx->ComputeGoodPut () << " bytes"
             << std::endl;
 
-    Simulator::Schedule (Seconds (1.0), &PrintVlcMetrics, rx);
+    Simulator::Schedule (Seconds (1.0), &PrintVlcMetrics, rx, receiverName);
 }
+
 
 int main() {
     NodeContainer carros;
@@ -173,18 +199,14 @@ int main() {
     Simulator::Schedule (Seconds (0.0), &SyncVlcPosition, carros.Get (1), devHelperVPPM.GetTransmitter ("TX_TO_RIS"));
     Simulator::Schedule (Seconds (0.0), &SyncVlcPosition, carros.Get (0), devHelperVPPM.GetReceiver ("RX_FROM_RIS"));
 
-    // Por enquanto, mede apenas de forma independente RIS_TX enviará mesmo se não receber nada
-    Simulator::Schedule (Seconds (1.0), &SendVlcPacket,
-                     devHelperVPPM.GetTransmitter ("TX_TO_RIS"));
+    // envio e recebimento
+    Simulator::Schedule (Seconds (1.0), &SendVlcPacket, devHelperVPPM.GetTransmitter ("TX_TO_RIS"));
 
-    Simulator::Schedule (Seconds (1.1), &SendVlcPacket,
-                        devHelperVPPM.GetTransmitter ("RIS_TX"));
+    Simulator::Schedule (Seconds (1.0), &ForwardPacketsFromRis, devHelperVPPM.GetReceiver ("RIS_RX"), devHelperVPPM.GetTransmitter ("RIS_TX"));
 
-    Simulator::Schedule (Seconds (1.0), &PrintVlcMetrics,
-                        devHelperVPPM.GetReceiver ("RIS_RX"));
+    Simulator::Schedule (Seconds (1.0), &PrintVlcMetrics, devHelperVPPM.GetReceiver ("RIS_RX"), "RIS_RX");
 
-    Simulator::Schedule (Seconds (1.0), &PrintVlcMetrics,
-                        devHelperVPPM.GetReceiver ("RX_FROM_RIS"));
+    Simulator::Schedule (Seconds (1.0), &PrintVlcMetrics, devHelperVPPM.GetReceiver ("RX_FROM_RIS"), "RX_FROM_RIS");
 
     Simulator::Stop(Seconds (35.0)); // para garantir que vai parar
 

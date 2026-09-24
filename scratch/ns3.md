@@ -68,4 +68,12 @@ Para gerar o arquivo que o ns3 consegue ler com os carros sendo representados po
 `
 
 ## Simulaçao completa
-A simulação completa utiliza o arquivo de mobilidade gerado, depois o instala nos carros. O RIS é criado na posição fixa (201.6, -1.6) e tem dois canais com dois dispositivos únicos cada. 
+A simulação completa utiliza o arquivo de mobilidade gerado, depois o instala nos carros. O RIS é criado na posição fixa (201.6, -1.6) e tem três canais com dois dispositivos únicos cada. 
+
+- Direto: CHANNEL_DIRECT = TX_DIRECT -> RX_DIRECT
+- Com RIS: TX_TO_RIS -> RIS_RX -> RIS_TX -> RX_FROM_RIS
+
+As funções agendadas são:
+1. Carro envia pacotes para RIS
+2. Para cada aumento do goodput do receptor do RIS envia um pacote do seu transmissor.
+3. Imprime-se ao receber em ambos os receptores.

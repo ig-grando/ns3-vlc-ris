@@ -1,0 +1,75 @@
+Waf: Entering directory `/home/iggl/Downloads/ns-allinone-3.25/ns-3.25/build'
+Waf: Leaving directory `/home/iggl/Downloads/ns-allinone-3.25/ns-3.25/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.626s)
+t=1 goodput acumulado em RIS_RX = 0 bytes
+t=1 goodput acumulado em RX_FROM_RIS = 0 bytes
+t=2 goodput acumulado em RIS_RX = 0 bytes
+t=2 goodput acumulado em RX_FROM_RIS = 0 bytes
+t=3 goodput acumulado em RIS_RX = 0 bytes
+t=3 goodput acumulado em RX_FROM_RIS = 0 bytes
+t=4 goodput acumulado em RIS_RX = 0 bytes
+t=4 goodput acumulado em RX_FROM_RIS = 0 bytes
+t=5 goodput acumulado em RIS_RX = 0 bytes
+t=5 goodput acumulado em RX_FROM_RIS = 0 bytes
+t=6 goodput acumulado em RIS_RX = 0 bytes
+t=6 goodput acumulado em RX_FROM_RIS = 0 bytes
+t=7 goodput acumulado em RIS_RX = 0 bytes
+t=7 goodput acumulado em RX_FROM_RIS = 0 bytes
+t=8 goodput acumulado em RIS_RX = 0 bytes
+t=8 goodput acumulado em RX_FROM_RIS = 0 bytes
+t=9 goodput acumulado em RIS_RX = 0 bytes
+t=9 goodput acumulado em RX_FROM_RIS = 0 bytes
+t=10 goodput acumulado em RIS_RX = 0 bytes
+t=10 goodput acumulado em RX_FROM_RIS = 0 bytes
+t=11 goodput acumulado em RIS_RX = 0 bytes
+t=11 goodput acumulado em RX_FROM_RIS = 0 bytes
+t=12 goodput acumulado em RIS_RX = 0 bytes
+t=12 goodput acumulado em RX_FROM_RIS = 0 bytes
+t=13 goodput acumulado em RIS_RX = 0 bytes
+t=13 goodput acumulado em RX_FROM_RIS = 0 bytes
+t=14 goodput acumulado em RIS_RX = 0 bytes
+t=14 goodput acumulado em RX_FROM_RIS = 0 bytes
+t=15 goodput acumulado em RIS_RX = 0 bytes
+t=15 goodput acumulado em RX_FROM_RIS = 0 bytes
+t=16 goodput acumulado em RIS_RX = 0 bytes
+t=16 goodput acumulado em RX_FROM_RIS = 0 bytes
+t=17 goodput acumulado em RIS_RX = 0 bytes
+t=17 goodput acumulado em RX_FROM_RIS = 0 bytes
+t=18 goodput acumulado em RIS_RX = 0 bytes
+t=18 goodput acumulado em RX_FROM_RIS = 0 bytes
+t=19 goodput acumulado em RIS_RX = 0 bytes
+t=19 goodput acumulado em RX_FROM_RIS = 0 bytes
+t=20 goodput acumulado em RIS_RX = 0 bytes
+t=20 goodput acumulado em RX_FROM_RIS = 0 bytes
+t=21 goodput acumulado em RIS_RX = 0 bytes
+t=21 goodput acumulado em RX_FROM_RIS = 0 bytes
+t=22 goodput acumulado em RIS_RX = 512 bytes
+t=22 goodput acumulado em RX_FROM_RIS = 0 bytes
+t=22 RIS encaminhou 512 bytes
+t=23 goodput acumulado em RIS_RX = 1024 bytes
+t=23 goodput acumulado em RX_FROM_RIS = 512 bytes
+t=23 RIS encaminhou 512 bytes
+t=24 goodput acumulado em RIS_RX = 1536 bytes
+t=24 goodput acumulado em RX_FROM_RIS = 1024 bytes
+t=24 RIS encaminhou 512 bytes
+t=25 goodput acumulado em RIS_RX = 1536 bytes
+t=25 goodput acumulado em RX_FROM_RIS = 1536 bytes
+t=26 goodput acumulado em RIS_RX = 1536 bytes
+t=26 goodput acumulado em RX_FROM_RIS = 1536 bytes
+t=27 goodput acumulado em RIS_RX = 1536 bytes
+t=27 goodput acumulado em RX_FROM_RIS = 1536 bytes
+t=28 goodput acumulado em RIS_RX = 1536 bytes
+t=28 goodput acumulado em RX_FROM_RIS = 1536 bytes
+t=29 goodput acumulado em RIS_RX = 1536 bytes
+t=29 goodput acumulado em RX_FROM_RIS = 1536 bytes
+t=30 goodput acumulado em RIS_RX = 1536 bytes
+t=30 goodput acumulado em RX_FROM_RIS = 1536 bytes
+t=31 goodput acumulado em RIS_RX = 1536 bytes
+t=31 goodput acumulado em RX_FROM_RIS = 1536 bytes
+t=32 goodput acumulado em RIS_RX = 1536 bytes
+t=32 goodput acumulado em RX_FROM_RIS = 1536 bytes
+t=33 goodput acumulado em RIS_RX = 1536 bytes
+t=33 goodput acumulado em RX_FROM_RIS = 1536 bytes
+t=34 goodput acumulado em RIS_RX = 1536 bytes
+t=34 goodput acumulado em RX_FROM_RIS = 1536 bytes
