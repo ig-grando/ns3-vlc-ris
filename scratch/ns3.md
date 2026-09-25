@@ -62,10 +62,10 @@ Cria dois arquivos:
 
 ## Sumo
 Roda a simulação de fato, executando um arquivo `.sumocfg` que diz ao simulador quais arquivos ele deve usar para executar o teste (geralmente só os dois acima).  
-Para gerar a posição dos veículos ao longo do tempo rodar:
+Para gerar a posição dos veículos ao longo do tempo rodar: 
 `sumo -c sumo_teste.sumocfg --fcd-output sumoTrace.xml`  
-Para gerar o arquivo que o ns3 consegue ler com os carros sendo representados por nodos usar: `/usr/bin/python3 $SUMO_HOME/tools/traceExporter.py     --fcd-input sumoTrace.xml     --ns2mobility-output mobility.tcl
-`
+Para gerar o arquivo que o ns3 consegue ler com os carros sendo representados por nodos usar:  
+`/usr/bin/python3 $SUMO_HOME/tools/traceExporter.py     --fcd-input sumoTrace.xml     --ns2mobility-output mobility.tcl`
 
 ## Simulaçao completa
 A simulação completa utiliza o arquivo de mobilidade gerado, depois o instala nos carros. O RIS é criado na posição fixa (201.6, -1.6) e tem três canais com dois dispositivos únicos cada. 
