@@ -21,15 +21,16 @@ using namespace ns3;
 static void CreateVlcTransmitter (
     VlcDeviceHelper &deviceHelper,
     const std::string &name,
-    double peakPower = 0.05,
-    double azimuth=0)
+    double peakPower = 0.01,
+    double azimuth=0,
+    double semiAngle=15.0)
 {
   deviceHelper.CreateTransmitter (name);
   deviceHelper.SetTXSignal (name, 1000, 0.5, 0, peakPower, 0);
   deviceHelper.SetTrasmitterParameter (name, "Bias", 0);
-  deviceHelper.SetTrasmitterParameter (name, "SemiAngle", 35);
+  deviceHelper.SetTrasmitterParameter (name, "SemiAngle", semiAngle);
   deviceHelper.SetTrasmitterParameter (name, "Azimuth", azimuth);
-  deviceHelper.SetTrasmitterParameter (name, "Elevation", 180.0);
+  deviceHelper.SetTrasmitterParameter (name, "Elevation", 90.0);
   deviceHelper.SetTrasmitterParameter (name, "Gain", 70);
   deviceHelper.SetTrasmitterParameter (name, "DataRateInMBPS", 5);
 }
@@ -38,12 +39,13 @@ static void CreateVlcTransmitter (
 static void CreateVlcReceiver (
     VlcDeviceHelper &deviceHelper,
     const std::string &name,
-    double azimuth = 90.0)
+    double azimuth = 90.0,
+    double fovAngle = 2.5)
 {
   deviceHelper.CreateReceiver (name);
   deviceHelper.SetReceiverParameter (name, "FilterGain", 1);
   deviceHelper.SetReceiverParameter (name, "RefractiveIndex", 1.5);
-  deviceHelper.SetReceiverParameter (name, "FOVAngle", 40.5);
+  deviceHelper.SetReceiverParameter (name, "FOVAngle", fovAngle);
   deviceHelper.SetReceiverParameter (name, "ConcentrationGain", 0);
   deviceHelper.SetReceiverParameter (name, "PhotoDetectorArea", 1.3e-5);
   deviceHelper.SetReceiverParameter (name, "RXGain", 0);
@@ -62,6 +64,8 @@ static void CreateVlcChannel (
     const std::string &receiverName)
 {
   channelHelper.CreateChannel (channelName);
+  channelHelper.GetChannel (channelName)->SetAttribute (
+      "DirectionalCheckEnabled", BooleanValue (true));
   channelHelper.SetPropagationLoss (channelName, "VlcPropagationLoss");
   channelHelper.SetPropagationDelay (channelName, 2);
   channelHelper.AttachTransmitter (channelName, transmitterName, &deviceHelper);
@@ -120,8 +124,7 @@ static void ForwardPacketsFromRis (Ptr<VlcRxNetDevice> risReceiver, Ptr<VlcTxNet
 
       forwardedBytes += packet->GetSize ();
 
-      std::cout << "t=" << Simulator::Now ().GetSeconds ()
-                << " RIS encaminhou 512 bytes" << std::endl;
+    //   std::cout << "t=" << Simulator::Now ().GetSeconds () << " RIS encaminhou 512 bytes" << std::endl;
     }
 
 
@@ -163,15 +166,16 @@ int main() {
     VlcDeviceHelper devHelperVPPM; //VLC Device Helper to manage the VLC Device and device properties.
 
     // Enlace direto: carro transmissor -> carro receptor.
-    CreateVlcTransmitter (devHelperVPPM, "TX_DIRECT");
-    CreateVlcReceiver (devHelperVPPM, "RX_DIRECT");
+    // A geometria do enlace direto exige um feixe um pouco maior e FOV amplo.
+    CreateVlcTransmitter (devHelperVPPM, "TX_DIRECT", 1, 0, 30);
+    CreateVlcReceiver (devHelperVPPM, "RX_DIRECT", 90, 90);
 
     // Primeiro salto do RIS: carro transmissor -> receptor do RIS.
     CreateVlcTransmitter (devHelperVPPM, "TX_TO_RIS");
     CreateVlcReceiver (devHelperVPPM, "RIS_RX", 180);
 
     // Segundo salto do RIS: transmissor do RIS -> carro receptor.
-    CreateVlcTransmitter (devHelperVPPM, "RIS_TX", 0.05, 270);
+    CreateVlcTransmitter (devHelperVPPM, "RIS_TX", 1, 270);
     CreateVlcReceiver (devHelperVPPM, "RX_FROM_RIS");
 
     devHelperVPPM.SetTrasmitterPosition ("RIS_TX", 201.6, -1.6, 0);
@@ -201,12 +205,13 @@ int main() {
 
     // envio e recebimento
     Simulator::Schedule (Seconds (1.0), &SendVlcPacket, devHelperVPPM.GetTransmitter ("TX_TO_RIS"));
+    Simulator::Schedule (Seconds (1.0), &SendVlcPacket, devHelperVPPM.GetTransmitter ("TX_DIRECT"));
 
     Simulator::Schedule (Seconds (1.0), &ForwardPacketsFromRis, devHelperVPPM.GetReceiver ("RIS_RX"), devHelperVPPM.GetTransmitter ("RIS_TX"));
 
-    Simulator::Schedule (Seconds (1.0), &PrintVlcMetrics, devHelperVPPM.GetReceiver ("RIS_RX"), "RIS_RX");
-
-    Simulator::Schedule (Seconds (1.0), &PrintVlcMetrics, devHelperVPPM.GetReceiver ("RX_FROM_RIS"), "RX_FROM_RIS");
+    Simulator::Schedule (Seconds (1.0), &PrintVlcMetrics, devHelperVPPM.GetReceiver ("RX_DIRECT"), "Receptor carro direto");
+    // Simulator::Schedule (Seconds (1.0), &PrintVlcMetrics, devHelperVPPM.GetReceiver ("RIS_RX"), "Receptor RIS");
+    Simulator::Schedule (Seconds (1.0), &PrintVlcMetrics, devHelperVPPM.GetReceiver ("RX_FROM_RIS"), "Receptor carro com RIS");
 
     Simulator::Stop(Seconds (35.0)); // para garantir que vai parar
 

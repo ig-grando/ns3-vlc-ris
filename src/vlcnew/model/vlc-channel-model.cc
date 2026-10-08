@@ -1,6 +1,7 @@
 #include "vlc-channel-model.h"
 #include "ns3/log.h"
 #include "ns3/simulator.h"
+#include "ns3/boolean.h"
 #include <fstream>
 
 namespace ns3 {
@@ -13,13 +14,18 @@ ns3::TypeId VlcChannel::GetTypeId(void)	// returns meta-information about VlcErr
 		{ 	// including parent class, group name, constructor, and attributes
 	static ns3::TypeId tid =
 			ns3::TypeId("VlcChannel").SetParent<ns3::Channel>().AddConstructor<
-					VlcChannel>().AddAttribute("AveragePower", "Average Power",
+					VlcChannel>().AddAttribute("DirectionalCheckEnabled",
+					"Reject packets outside the TX beam or RX field of view in 2D",
+					BooleanValue(false),
+					MakeBooleanAccessor(&VlcChannel::m_directionalCheckEnabled),
+					MakeBooleanChecker()).AddAttribute("AveragePower", "Average Power",
 					DoubleValue(0), MakeDoubleAccessor(&VlcChannel::m_AvgPower),
 					MakeDoubleChecker<double>());
 	return tid;
 }
 
 VlcChannel::VlcChannel() :
+	m_directionalCheckEnabled(false),
 	m_distanceBWTXandRX(0) {
 	NS_LOG_FUNCTION(this);
 	m_loss = CreateObject<VlcPropagationLossModel>();
@@ -35,6 +41,29 @@ void ns3::VlcChannel::Attach(Ptr<VlcNetDevice> device) {
 		m_link[0].m_dst = m_link[1].m_src;
 		m_link[1].m_dst = m_link[0].m_src;
 	}
+}
+
+bool VlcChannel::HasDirectionalLink(Ptr<VlcTxNetDevice> tx,
+		Ptr<VlcRxNetDevice> rx) const {
+	const Vector txPosition = tx->GetPosition();
+	const Vector rxPosition = rx->GetPosition();
+	const double dx = rxPosition.x - txPosition.x;
+	const double dy = rxPosition.y - txPosition.y;
+	const double distanceSquared = dx * dx + dy * dy;
+
+	// The planar direction is undefined when the devices share a position.
+	if (distanceSquared == 0) {
+		return false;
+	}
+
+	const double txBearing = std::atan2(dy, dx);
+	const double rxBearing = std::atan2(-dy, -dx);
+	const double txOffset = std::abs(std::remainder(
+			txBearing - tx->GetAzmuth(), 2 * M_PI));
+	const double rxOffset = std::abs(std::remainder(
+			rxBearing - rx->GetAzmuth(), 2 * M_PI));
+
+	return txOffset <= tx->GetSemiangle() && rxOffset <= rx->GetFOVAngle();
 }
 
 uint32_t VlcChannel::GetNDevices(void) const {
@@ -91,9 +120,13 @@ void VlcChannel::DoCalcPropagationLoss() {
 	ns3::Ptr < VlcRxNetDevice > second = ns3::DynamicCast < VlcRxNetDevice
 			> (this->GetDevice(1));
 	double loss = 0;
+	const bool linkAvailable = !m_directionalCheckEnabled
+			|| HasDirectionalLink(first, second);
 
 	for (unsigned int i = 0; i < first->GetTXOpticalPowerSignal().size(); i++) {
-		loss = m_loss->CalcRxPower(first->GetTXOpticalPowerSignal().at(i),first->GetMobilityModel(), second->GetMobilityModel());
+		loss = linkAvailable ? m_loss->CalcRxPower(
+				first->GetTXOpticalPowerSignal().at(i),
+				first->GetMobilityModel(), second->GetMobilityModel()) : 0;
 		second->GetRXOpticalPowerSignal().at(i) = loss;
 	}
 
@@ -109,6 +142,10 @@ double VlcChannel::DoCalcPropagationLossForSignal(int timeInstant) {
 	NS_LOG_FUNCTION(this);
 	ns3::Ptr < VlcTxNetDevice > first = ns3::DynamicCast < VlcTxNetDevice> (this->GetDevice(0));
 	ns3::Ptr < VlcRxNetDevice > second = ns3::DynamicCast < VlcRxNetDevice> (this->GetDevice(1));
+	if (m_directionalCheckEnabled && !HasDirectionalLink(first, second)) {
+		m_SNR->SetReceivedPower(0);
+		return 0;
+	}
 	double pMax = *std::max_element(first->GetTXOpticalPowerSignal().begin(),first->GetTXOpticalPowerSignal().end());
 	double pMin = *std::min_element(first->GetTXOpticalPowerSignal().begin(),first->GetTXOpticalPowerSignal().end());
 	double dutyCycle = second->GetAlpha();
@@ -222,12 +259,16 @@ bool VlcChannel::TransmitStart(Ptr<Packet> p, Ptr<VlcNetDevice> src,
 
 void VlcChannel::TransmitDataPacket(Ptr<Packet> p) {
 	NS_LOG_FUNCTION(this<<p);
+	ns3::Ptr < VlcTxNetDevice > tx = DynamicCast < VlcTxNetDevice> (this->GetDevice(0));
+	ns3::Ptr < VlcRxNetDevice > rx = DynamicCast < VlcRxNetDevice> (this->GetDevice(1));
+	if (m_directionalCheckEnabled && !HasDirectionalLink(tx, rx)) {
+		NS_LOG_INFO("Packet rejected outside TX beam or RX field of view at t="
+				<< Simulator::Now().GetSeconds());
+		return;
+	}
 	//this is the point where we decide to keep the packet or corrupt it
 	this->DoCalcPropagationLossForSignal(0);
 	this->CalculateNoiseVar();
-
-	ns3::Ptr < VlcTxNetDevice > tx = DynamicCast < VlcTxNetDevice> (this->GetDevice(0));
-	ns3::Ptr < VlcRxNetDevice > rx = DynamicCast < VlcRxNetDevice> (this->GetDevice(1));
 
 	rx->GetErrorModel()->SetSNR(this->GetSNR()); //for each transmission event calculate the SNR and set it in error model.
 	double distance = this->GetDistance(tx->GetMobilityModel(),	rx->GetMobilityModel());

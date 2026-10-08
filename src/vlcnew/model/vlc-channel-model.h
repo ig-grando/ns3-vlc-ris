@@ -22,6 +22,9 @@
 
 namespace ns3 {
 
+class VlcTxNetDevice;
+class VlcRxNetDevice;
+
 class VlcChannel: public Channel {
 public:
 	VlcChannel();
@@ -86,6 +89,10 @@ public:
 	void Attach(Ptr<VlcNetDevice> device); 
 
 private:
+	// Checks whether TX and RX face each other within their 2D angular limits.
+	bool HasDirectionalLink(Ptr<VlcTxNetDevice> tx, Ptr<VlcRxNetDevice> rx) const;
+	bool m_directionalCheckEnabled;
+
 	ns3::Ptr<ns3::PropagationLossModel> m_loss;
 
 	double m_distanceBWTXandRX;
