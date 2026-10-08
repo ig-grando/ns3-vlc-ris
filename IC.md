@@ -69,3 +69,7 @@ Para gerar o arquivo que o ns3 consegue ler com os carros sendo representados po
 ## Simulação Final
 - Atualemente o módulo de vlc faz o cálculo considerando potência e ganho de transmissão e recepção, mas desconsidera LOS, é necessário adpatar para considerar o ângulo de transmissão e recepção.
 - `vlc-channel-model.cc ` foi alterado para considerar os ângulos
+
+## TODO
+- Exibir o tempo em que os primeiros pacotes de cada tipo de transmissão são enviados
+- Fazer script que passa vários parâmetros para teste.

@@ -16,11 +16,15 @@
 
 
 using namespace ns3;
+using namespace std;
+
+int pacotesEnviadosDireto = 0;
+int pacotesEnviadosRIS = 0;
 
 // Cria um transmissor com a configuracao padrao usada neste experimento.
 static void CreateVlcTransmitter (
     VlcDeviceHelper &deviceHelper,
-    const std::string &name,
+    const string &name,
     double peakPower = 0.01,
     double azimuth=0,
     double semiAngle=15.0)
@@ -38,9 +42,9 @@ static void CreateVlcTransmitter (
 // Cria um receptor com a configuracao padrao usada neste experimento.
 static void CreateVlcReceiver (
     VlcDeviceHelper &deviceHelper,
-    const std::string &name,
+    const string &name,
     double azimuth = 90.0,
-    double fovAngle = 2.5)
+    double fovAngle = 7.5)
 {
   deviceHelper.CreateReceiver (name);
   deviceHelper.SetReceiverParameter (name, "FilterGain", 1);
@@ -59,9 +63,9 @@ static void CreateVlcReceiver (
 static void CreateVlcChannel (
     VlcChannelHelper &channelHelper,
     VlcDeviceHelper &deviceHelper,
-    const std::string &channelName,
-    const std::string &transmitterName,
-    const std::string &receiverName)
+    const string &channelName,
+    const string &transmitterName,
+    const string &receiverName)
 {
   channelHelper.CreateChannel (channelName);
   channelHelper.GetChannel (channelName)->SetAttribute (
@@ -76,18 +80,18 @@ static void CreateVlcChannel (
 }
 
 static void PrintPositions (NodeContainer carros) {
-  std::cout << std::fixed << std::setprecision (2)
-            << "tempo=" << Simulator::Now ().GetSeconds () << " s" << std::endl;
+  cout << fixed << setprecision (2)
+            << "tempo=" << Simulator::Now ().GetSeconds () << " s" << endl;
 
   for (NodeContainer::Iterator it = carros.Begin (); it != carros.End (); ++it)
     {
       Ptr<MobilityModel> mobility = (*it)->GetObject<MobilityModel> ();
       Vector position = mobility->GetPosition ();
 
-      std::cout << "  no=" << (*it)->GetId ()
+      cout << "  no=" << (*it)->GetId ()
                 << "  x=" << position.x
                 << "  y=" << position.y
-                << std::endl;
+                << endl;
     }
       Simulator::Schedule (Seconds (1.0), &PrintPositions, carros);
 }
@@ -100,11 +104,17 @@ static void SyncVlcPosition (Ptr<Node> node, Ptr<VlcNetDevice> device) {
     Simulator::Schedule (MilliSeconds (100), &SyncVlcPosition, node, device);
 }
 
-static void SendVlcPacket (Ptr<VlcTxNetDevice> tx) {
+static void SendVlcPacket (Ptr<VlcTxNetDevice> tx, string nomerRx) {
+    if(nomerRx == "TX_DIRECT") {
+        pacotesEnviadosDireto++;
+    } else if(nomerRx == "TX_TO_RIS") {
+        pacotesEnviadosRIS++;
+    }
+
     Ptr<Packet> packet = Create<Packet> (512); // pacote de 512 bytes
     tx->EnqueueDataPacket (packet);
 
-    Simulator::Schedule (Seconds (1.0), &SendVlcPacket, tx);
+    Simulator::Schedule (Seconds (1.0), &SendVlcPacket, tx, nomerRx);
 
 }
 
@@ -124,7 +134,7 @@ static void ForwardPacketsFromRis (Ptr<VlcRxNetDevice> risReceiver, Ptr<VlcTxNet
 
       forwardedBytes += packet->GetSize ();
 
-    //   std::cout << "t=" << Simulator::Now ().GetSeconds () << " RIS encaminhou 512 bytes" << std::endl;
+    //   cout << "t=" << Simulator::Now ().GetSeconds () << " RIS encaminhou 512 bytes" << endl;
     }
 
 
@@ -132,11 +142,11 @@ static void ForwardPacketsFromRis (Ptr<VlcRxNetDevice> risReceiver, Ptr<VlcTxNet
                         risReceiver, risTransmitter);
 }
 
-static void PrintVlcMetrics (Ptr<VlcRxNetDevice> rx, std::string receiverName) {
-    std::cout << "t=" << Simulator::Now ().GetSeconds ()
+static void PrintVlcMetrics (Ptr<VlcRxNetDevice> rx, string receiverName) {
+    cout << "t=" << Simulator::Now ().GetSeconds ()
             << " goodput acumulado em " << receiverName << " = "
             << rx->ComputeGoodPut () << " bytes"
-            << std::endl;
+            << endl;
 
     Simulator::Schedule (Seconds (1.0), &PrintVlcMetrics, rx, receiverName);
 }
@@ -175,7 +185,7 @@ int main() {
     CreateVlcReceiver (devHelperVPPM, "RIS_RX", 180);
 
     // Segundo salto do RIS: transmissor do RIS -> carro receptor.
-    CreateVlcTransmitter (devHelperVPPM, "RIS_TX", 1, 270);
+    CreateVlcTransmitter (devHelperVPPM, "RIS_TX", 0.01, 270);
     CreateVlcReceiver (devHelperVPPM, "RX_FROM_RIS");
 
     devHelperVPPM.SetTrasmitterPosition ("RIS_TX", 201.6, -1.6, 0);
@@ -204,8 +214,8 @@ int main() {
     Simulator::Schedule (Seconds (0.0), &SyncVlcPosition, carros.Get (0), devHelperVPPM.GetReceiver ("RX_FROM_RIS"));
 
     // envio e recebimento
-    Simulator::Schedule (Seconds (1.0), &SendVlcPacket, devHelperVPPM.GetTransmitter ("TX_TO_RIS"));
-    Simulator::Schedule (Seconds (1.0), &SendVlcPacket, devHelperVPPM.GetTransmitter ("TX_DIRECT"));
+    Simulator::Schedule (Seconds (1.0), &SendVlcPacket, devHelperVPPM.GetTransmitter ("TX_TO_RIS"), "TX_TO_RIS");
+    Simulator::Schedule (Seconds (1.0), &SendVlcPacket, devHelperVPPM.GetTransmitter ("TX_DIRECT"), "TX_DIRECT");
 
     Simulator::Schedule (Seconds (1.0), &ForwardPacketsFromRis, devHelperVPPM.GetReceiver ("RIS_RX"), devHelperVPPM.GetTransmitter ("RIS_TX"));
 
@@ -217,6 +227,12 @@ int main() {
 
     Simulator::Run();
     Simulator::Destroy();
+
+    const int diretoRecebidos = devHelperVPPM.GetReceiver ("RX_DIRECT")->ComputeGoodPut () / 512;
+    const int risRecebidos = devHelperVPPM.GetReceiver ("RX_FROM_RIS")->ComputeGoodPut () / 512;
+
+    cout << "PACOTES RECEBIDOS DIRETO: " << diretoRecebidos << "/" << pacotesEnviadosDireto << endl;
+    cout << "PACOTES RECEBIDOS RIS: " << risRecebidos << "/" << pacotesEnviadosRIS << endl;
 
     return 0;
 }

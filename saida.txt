@@ -1,74 +1,76 @@
 Waf: Entering directory `/home/iggl/Downloads/ns-allinone-3.25/ns-3.25/build'
 [ 932/2172] Compiling scratch/carros-vlc.cc
-[2152/2172] Linking build/scratch/carros-vlc
+[2161/2172] Linking build/scratch/carros-vlc
 Waf: Leaving directory `/home/iggl/Downloads/ns-allinone-3.25/ns-3.25/build'
 Build commands will be stored in build/compile_commands.json
-'build' finished successfully (2.433s)
+'build' finished successfully (2.440s)
 t=1 goodput acumulado em Receptor carro direto = 0 bytes
 t=1 goodput acumulado em Receptor carro com RIS = 0 bytes
 t=2 goodput acumulado em Receptor carro direto = 0 bytes
-t=2 goodput acumulado em Receptor carro com RIS = 512 bytes
+t=2 goodput acumulado em Receptor carro com RIS = 0 bytes
 t=3 goodput acumulado em Receptor carro direto = 0 bytes
-t=3 goodput acumulado em Receptor carro com RIS = 1024 bytes
+t=3 goodput acumulado em Receptor carro com RIS = 0 bytes
 t=4 goodput acumulado em Receptor carro direto = 0 bytes
-t=4 goodput acumulado em Receptor carro com RIS = 1536 bytes
+t=4 goodput acumulado em Receptor carro com RIS = 0 bytes
 t=5 goodput acumulado em Receptor carro direto = 0 bytes
-t=5 goodput acumulado em Receptor carro com RIS = 2048 bytes
+t=5 goodput acumulado em Receptor carro com RIS = 0 bytes
 t=6 goodput acumulado em Receptor carro direto = 0 bytes
-t=6 goodput acumulado em Receptor carro com RIS = 2560 bytes
+t=6 goodput acumulado em Receptor carro com RIS = 0 bytes
 t=7 goodput acumulado em Receptor carro direto = 0 bytes
-t=7 goodput acumulado em Receptor carro com RIS = 3072 bytes
+t=7 goodput acumulado em Receptor carro com RIS = 0 bytes
 t=8 goodput acumulado em Receptor carro direto = 0 bytes
-t=8 goodput acumulado em Receptor carro com RIS = 3584 bytes
+t=8 goodput acumulado em Receptor carro com RIS = 0 bytes
 t=9 goodput acumulado em Receptor carro direto = 0 bytes
-t=9 goodput acumulado em Receptor carro com RIS = 4096 bytes
+t=9 goodput acumulado em Receptor carro com RIS = 0 bytes
 t=10 goodput acumulado em Receptor carro direto = 0 bytes
-t=10 goodput acumulado em Receptor carro com RIS = 4608 bytes
+t=10 goodput acumulado em Receptor carro com RIS = 0 bytes
 t=11 goodput acumulado em Receptor carro direto = 0 bytes
-t=11 goodput acumulado em Receptor carro com RIS = 5120 bytes
+t=11 goodput acumulado em Receptor carro com RIS = 0 bytes
 t=12 goodput acumulado em Receptor carro direto = 0 bytes
-t=12 goodput acumulado em Receptor carro com RIS = 5632 bytes
+t=12 goodput acumulado em Receptor carro com RIS = 0 bytes
 t=13 goodput acumulado em Receptor carro direto = 0 bytes
-t=13 goodput acumulado em Receptor carro com RIS = 6144 bytes
+t=13 goodput acumulado em Receptor carro com RIS = 0 bytes
 t=14 goodput acumulado em Receptor carro direto = 0 bytes
-t=14 goodput acumulado em Receptor carro com RIS = 6656 bytes
+t=14 goodput acumulado em Receptor carro com RIS = 0 bytes
 t=15 goodput acumulado em Receptor carro direto = 0 bytes
-t=15 goodput acumulado em Receptor carro com RIS = 7168 bytes
+t=15 goodput acumulado em Receptor carro com RIS = 0 bytes
 t=16 goodput acumulado em Receptor carro direto = 0 bytes
-t=16 goodput acumulado em Receptor carro com RIS = 7680 bytes
+t=16 goodput acumulado em Receptor carro com RIS = 512 bytes
 t=17 goodput acumulado em Receptor carro direto = 0 bytes
-t=17 goodput acumulado em Receptor carro com RIS = 8192 bytes
+t=17 goodput acumulado em Receptor carro com RIS = 1024 bytes
 t=18 goodput acumulado em Receptor carro direto = 0 bytes
-t=18 goodput acumulado em Receptor carro com RIS = 8704 bytes
+t=18 goodput acumulado em Receptor carro com RIS = 1536 bytes
 t=19 goodput acumulado em Receptor carro direto = 512 bytes
-t=19 goodput acumulado em Receptor carro com RIS = 9216 bytes
+t=19 goodput acumulado em Receptor carro com RIS = 2048 bytes
 t=20 goodput acumulado em Receptor carro direto = 1024 bytes
-t=20 goodput acumulado em Receptor carro com RIS = 9728 bytes
+t=20 goodput acumulado em Receptor carro com RIS = 2560 bytes
 t=21 goodput acumulado em Receptor carro direto = 1536 bytes
-t=21 goodput acumulado em Receptor carro com RIS = 10240 bytes
+t=21 goodput acumulado em Receptor carro com RIS = 3072 bytes
 t=22 goodput acumulado em Receptor carro direto = 2048 bytes
-t=22 goodput acumulado em Receptor carro com RIS = 10752 bytes
+t=22 goodput acumulado em Receptor carro com RIS = 3584 bytes
 t=23 goodput acumulado em Receptor carro direto = 2048 bytes
-t=23 goodput acumulado em Receptor carro com RIS = 11264 bytes
+t=23 goodput acumulado em Receptor carro com RIS = 4096 bytes
 t=24 goodput acumulado em Receptor carro direto = 2048 bytes
-t=24 goodput acumulado em Receptor carro com RIS = 11776 bytes
+t=24 goodput acumulado em Receptor carro com RIS = 4608 bytes
 t=25 goodput acumulado em Receptor carro direto = 2048 bytes
-t=25 goodput acumulado em Receptor carro com RIS = 11776 bytes
+t=25 goodput acumulado em Receptor carro com RIS = 4608 bytes
 t=26 goodput acumulado em Receptor carro direto = 2048 bytes
-t=26 goodput acumulado em Receptor carro com RIS = 11776 bytes
+t=26 goodput acumulado em Receptor carro com RIS = 4608 bytes
 t=27 goodput acumulado em Receptor carro direto = 2048 bytes
-t=27 goodput acumulado em Receptor carro com RIS = 11776 bytes
+t=27 goodput acumulado em Receptor carro com RIS = 4608 bytes
 t=28 goodput acumulado em Receptor carro direto = 2048 bytes
-t=28 goodput acumulado em Receptor carro com RIS = 11776 bytes
+t=28 goodput acumulado em Receptor carro com RIS = 4608 bytes
 t=29 goodput acumulado em Receptor carro direto = 2048 bytes
-t=29 goodput acumulado em Receptor carro com RIS = 11776 bytes
+t=29 goodput acumulado em Receptor carro com RIS = 4608 bytes
 t=30 goodput acumulado em Receptor carro direto = 2048 bytes
-t=30 goodput acumulado em Receptor carro com RIS = 11776 bytes
+t=30 goodput acumulado em Receptor carro com RIS = 4608 bytes
 t=31 goodput acumulado em Receptor carro direto = 2048 bytes
-t=31 goodput acumulado em Receptor carro com RIS = 11776 bytes
+t=31 goodput acumulado em Receptor carro com RIS = 4608 bytes
 t=32 goodput acumulado em Receptor carro direto = 2048 bytes
-t=32 goodput acumulado em Receptor carro com RIS = 11776 bytes
+t=32 goodput acumulado em Receptor carro com RIS = 4608 bytes
 t=33 goodput acumulado em Receptor carro direto = 2048 bytes
-t=33 goodput acumulado em Receptor carro com RIS = 11776 bytes
+t=33 goodput acumulado em Receptor carro com RIS = 4608 bytes
 t=34 goodput acumulado em Receptor carro direto = 2048 bytes
-t=34 goodput acumulado em Receptor carro com RIS = 11776 bytes
+t=34 goodput acumulado em Receptor carro com RIS = 4608 bytes
+PACOTES RECEBIDOS DIRETO: 4/34
+PACOTES RECEBIDOS RIS: 9/34
