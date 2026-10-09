@@ -1,76 +1,228 @@
-Waf: Entering directory `/home/iggl/Downloads/ns-allinone-3.25/ns-3.25/build'
-[ 932/2172] Compiling scratch/carros-vlc.cc
-[2161/2172] Linking build/scratch/carros-vlc
-Waf: Leaving directory `/home/iggl/Downloads/ns-allinone-3.25/ns-3.25/build'
-Build commands will be stored in build/compile_commands.json
-'build' finished successfully (2.440s)
-t=1 goodput acumulado em Receptor carro direto = 0 bytes
-t=1 goodput acumulado em Receptor carro com RIS = 0 bytes
-t=2 goodput acumulado em Receptor carro direto = 0 bytes
-t=2 goodput acumulado em Receptor carro com RIS = 0 bytes
-t=3 goodput acumulado em Receptor carro direto = 0 bytes
-t=3 goodput acumulado em Receptor carro com RIS = 0 bytes
-t=4 goodput acumulado em Receptor carro direto = 0 bytes
-t=4 goodput acumulado em Receptor carro com RIS = 0 bytes
-t=5 goodput acumulado em Receptor carro direto = 0 bytes
-t=5 goodput acumulado em Receptor carro com RIS = 0 bytes
-t=6 goodput acumulado em Receptor carro direto = 0 bytes
-t=6 goodput acumulado em Receptor carro com RIS = 0 bytes
-t=7 goodput acumulado em Receptor carro direto = 0 bytes
-t=7 goodput acumulado em Receptor carro com RIS = 0 bytes
-t=8 goodput acumulado em Receptor carro direto = 0 bytes
-t=8 goodput acumulado em Receptor carro com RIS = 0 bytes
-t=9 goodput acumulado em Receptor carro direto = 0 bytes
-t=9 goodput acumulado em Receptor carro com RIS = 0 bytes
-t=10 goodput acumulado em Receptor carro direto = 0 bytes
-t=10 goodput acumulado em Receptor carro com RIS = 0 bytes
-t=11 goodput acumulado em Receptor carro direto = 0 bytes
-t=11 goodput acumulado em Receptor carro com RIS = 0 bytes
-t=12 goodput acumulado em Receptor carro direto = 0 bytes
-t=12 goodput acumulado em Receptor carro com RIS = 0 bytes
-t=13 goodput acumulado em Receptor carro direto = 0 bytes
-t=13 goodput acumulado em Receptor carro com RIS = 0 bytes
-t=14 goodput acumulado em Receptor carro direto = 0 bytes
-t=14 goodput acumulado em Receptor carro com RIS = 0 bytes
-t=15 goodput acumulado em Receptor carro direto = 0 bytes
-t=15 goodput acumulado em Receptor carro com RIS = 0 bytes
-t=16 goodput acumulado em Receptor carro direto = 0 bytes
-t=16 goodput acumulado em Receptor carro com RIS = 512 bytes
-t=17 goodput acumulado em Receptor carro direto = 0 bytes
-t=17 goodput acumulado em Receptor carro com RIS = 1024 bytes
-t=18 goodput acumulado em Receptor carro direto = 0 bytes
-t=18 goodput acumulado em Receptor carro com RIS = 1536 bytes
-t=19 goodput acumulado em Receptor carro direto = 512 bytes
-t=19 goodput acumulado em Receptor carro com RIS = 2048 bytes
-t=20 goodput acumulado em Receptor carro direto = 1024 bytes
-t=20 goodput acumulado em Receptor carro com RIS = 2560 bytes
-t=21 goodput acumulado em Receptor carro direto = 1536 bytes
-t=21 goodput acumulado em Receptor carro com RIS = 3072 bytes
-t=22 goodput acumulado em Receptor carro direto = 2048 bytes
-t=22 goodput acumulado em Receptor carro com RIS = 3584 bytes
-t=23 goodput acumulado em Receptor carro direto = 2048 bytes
-t=23 goodput acumulado em Receptor carro com RIS = 4096 bytes
-t=24 goodput acumulado em Receptor carro direto = 2048 bytes
-t=24 goodput acumulado em Receptor carro com RIS = 4608 bytes
-t=25 goodput acumulado em Receptor carro direto = 2048 bytes
-t=25 goodput acumulado em Receptor carro com RIS = 4608 bytes
-t=26 goodput acumulado em Receptor carro direto = 2048 bytes
-t=26 goodput acumulado em Receptor carro com RIS = 4608 bytes
-t=27 goodput acumulado em Receptor carro direto = 2048 bytes
-t=27 goodput acumulado em Receptor carro com RIS = 4608 bytes
-t=28 goodput acumulado em Receptor carro direto = 2048 bytes
-t=28 goodput acumulado em Receptor carro com RIS = 4608 bytes
-t=29 goodput acumulado em Receptor carro direto = 2048 bytes
-t=29 goodput acumulado em Receptor carro com RIS = 4608 bytes
-t=30 goodput acumulado em Receptor carro direto = 2048 bytes
-t=30 goodput acumulado em Receptor carro com RIS = 4608 bytes
-t=31 goodput acumulado em Receptor carro direto = 2048 bytes
-t=31 goodput acumulado em Receptor carro com RIS = 4608 bytes
-t=32 goodput acumulado em Receptor carro direto = 2048 bytes
-t=32 goodput acumulado em Receptor carro com RIS = 4608 bytes
-t=33 goodput acumulado em Receptor carro direto = 2048 bytes
-t=33 goodput acumulado em Receptor carro com RIS = 4608 bytes
-t=34 goodput acumulado em Receptor carro direto = 2048 bytes
-t=34 goodput acumulado em Receptor carro com RIS = 4608 bytes
+
+====================================================================================================
+EXECUCAO 1/25
+carros-vlc --potencia=1 --semiAnguloDireto=90 --fovDireto=90 --semiAnguloRIS=15 --fovRIS=15
+----------------------------------------------------------------------------------------------------
+TEMPO PRIMEIRO PACOTE DIRETO: 21s
+TEMPO PRIMEIRO PACOTE RIS: 2s
+PACOTES RECEBIDOS DIRETO: 3/34
+PACOTES RECEBIDOS RIS: 23/34
+
+====================================================================================================
+EXECUCAO 2/25
+carros-vlc --potencia=1 --semiAnguloDireto=90 --fovDireto=75 --semiAnguloRIS=15 --fovRIS=30
+----------------------------------------------------------------------------------------------------
+TEMPO PRIMEIRO PACOTE DIRETO: 21s
+TEMPO PRIMEIRO PACOTE RIS: 2s
+PACOTES RECEBIDOS DIRETO: 3/34
+PACOTES RECEBIDOS RIS: 23/34
+
+====================================================================================================
+EXECUCAO 3/25
+carros-vlc --potencia=1 --semiAnguloDireto=90 --fovDireto=60 --semiAnguloRIS=15 --fovRIS=45
+----------------------------------------------------------------------------------------------------
+TEMPO PRIMEIRO PACOTE DIRETO: 23s
+TEMPO PRIMEIRO PACOTE RIS: 2s
+PACOTES RECEBIDOS DIRETO: 1/34
+PACOTES RECEBIDOS RIS: 23/34
+
+====================================================================================================
+EXECUCAO 4/25
+carros-vlc --potencia=1 --semiAnguloDireto=90 --fovDireto=45 --semiAnguloRIS=15 --fovRIS=60
+----------------------------------------------------------------------------------------------------
+TEMPO PRIMEIRO PACOTE DIRETO: 23s
+TEMPO PRIMEIRO PACOTE RIS: 2s
+PACOTES RECEBIDOS DIRETO: 1/34
+PACOTES RECEBIDOS RIS: 23/34
+
+====================================================================================================
+EXECUCAO 5/25
+carros-vlc --potencia=1 --semiAnguloDireto=90 --fovDireto=30 --semiAnguloRIS=15 --fovRIS=90
+----------------------------------------------------------------------------------------------------
+TEMPO PRIMEIRO PACOTE DIRETO: 23s
+TEMPO PRIMEIRO PACOTE RIS: 2s
+PACOTES RECEBIDOS DIRETO: 1/34
+PACOTES RECEBIDOS RIS: 23/34
+
+====================================================================================================
+EXECUCAO 6/25
+carros-vlc --potencia=1 --semiAnguloDireto=75 --fovDireto=90 --semiAnguloRIS=30 --fovRIS=15
+----------------------------------------------------------------------------------------------------
+TEMPO PRIMEIRO PACOTE DIRETO: 21s
+TEMPO PRIMEIRO PACOTE RIS: 2s
+PACOTES RECEBIDOS DIRETO: 2/34
+PACOTES RECEBIDOS RIS: 23/34
+
+====================================================================================================
+EXECUCAO 7/25
+carros-vlc --potencia=1 --semiAnguloDireto=75 --fovDireto=75 --semiAnguloRIS=30 --fovRIS=30
+----------------------------------------------------------------------------------------------------
+TEMPO PRIMEIRO PACOTE DIRETO: 21s
+TEMPO PRIMEIRO PACOTE RIS: 2s
+PACOTES RECEBIDOS DIRETO: 2/34
+PACOTES RECEBIDOS RIS: 23/34
+
+====================================================================================================
+EXECUCAO 8/25
+carros-vlc --potencia=1 --semiAnguloDireto=75 --fovDireto=60 --semiAnguloRIS=30 --fovRIS=45
+----------------------------------------------------------------------------------------------------
+TEMPO PRIMEIRO PACOTE DIRETO: nenhum pacote detectado
+TEMPO PRIMEIRO PACOTE RIS: 17s
+PACOTES RECEBIDOS DIRETO: 0/34
+PACOTES RECEBIDOS RIS: 8/34
+
+====================================================================================================
+EXECUCAO 9/25
+carros-vlc --potencia=1 --semiAnguloDireto=75 --fovDireto=45 --semiAnguloRIS=30 --fovRIS=60
+----------------------------------------------------------------------------------------------------
+TEMPO PRIMEIRO PACOTE DIRETO: nenhum pacote detectado
+TEMPO PRIMEIRO PACOTE RIS: 17s
+PACOTES RECEBIDOS DIRETO: 0/34
+PACOTES RECEBIDOS RIS: 8/34
+
+====================================================================================================
+EXECUCAO 10/25
+carros-vlc --potencia=1 --semiAnguloDireto=75 --fovDireto=30 --semiAnguloRIS=30 --fovRIS=90
+----------------------------------------------------------------------------------------------------
+TEMPO PRIMEIRO PACOTE DIRETO: nenhum pacote detectado
+TEMPO PRIMEIRO PACOTE RIS: 19s
+PACOTES RECEBIDOS DIRETO: 0/34
+PACOTES RECEBIDOS RIS: 6/34
+
+====================================================================================================
+EXECUCAO 11/25
+carros-vlc --potencia=1 --semiAnguloDireto=60 --fovDireto=90 --semiAnguloRIS=45 --fovRIS=15
+----------------------------------------------------------------------------------------------------
+TEMPO PRIMEIRO PACOTE DIRETO: 21s
+TEMPO PRIMEIRO PACOTE RIS: 2s
+PACOTES RECEBIDOS DIRETO: 2/34
+PACOTES RECEBIDOS RIS: 23/34
+
+====================================================================================================
+EXECUCAO 12/25
+carros-vlc --potencia=1 --semiAnguloDireto=60 --fovDireto=75 --semiAnguloRIS=45 --fovRIS=30
+----------------------------------------------------------------------------------------------------
+TEMPO PRIMEIRO PACOTE DIRETO: 21s
+TEMPO PRIMEIRO PACOTE RIS: 16s
+PACOTES RECEBIDOS DIRETO: 2/34
+PACOTES RECEBIDOS RIS: 9/34
+
+====================================================================================================
+EXECUCAO 13/25
+carros-vlc --potencia=1 --semiAnguloDireto=60 --fovDireto=60 --semiAnguloRIS=45 --fovRIS=45
+----------------------------------------------------------------------------------------------------
+TEMPO PRIMEIRO PACOTE DIRETO: nenhum pacote detectado
+TEMPO PRIMEIRO PACOTE RIS: 19s
+PACOTES RECEBIDOS DIRETO: 0/34
+PACOTES RECEBIDOS RIS: 6/34
+
+====================================================================================================
+EXECUCAO 14/25
+carros-vlc --potencia=1 --semiAnguloDireto=60 --fovDireto=45 --semiAnguloRIS=45 --fovRIS=60
+----------------------------------------------------------------------------------------------------
+TEMPO PRIMEIRO PACOTE DIRETO: nenhum pacote detectado
+TEMPO PRIMEIRO PACOTE RIS: 19s
+PACOTES RECEBIDOS DIRETO: 0/34
+PACOTES RECEBIDOS RIS: 6/34
+
+====================================================================================================
+EXECUCAO 15/25
+carros-vlc --potencia=1 --semiAnguloDireto=60 --fovDireto=30 --semiAnguloRIS=45 --fovRIS=90
+----------------------------------------------------------------------------------------------------
+TEMPO PRIMEIRO PACOTE DIRETO: nenhum pacote detectado
+TEMPO PRIMEIRO PACOTE RIS: 20s
+PACOTES RECEBIDOS DIRETO: 0/34
+PACOTES RECEBIDOS RIS: 5/34
+
+====================================================================================================
+EXECUCAO 16/25
+carros-vlc --potencia=1 --semiAnguloDireto=45 --fovDireto=90 --semiAnguloRIS=60 --fovRIS=15
+----------------------------------------------------------------------------------------------------
+TEMPO PRIMEIRO PACOTE DIRETO: 20s
+TEMPO PRIMEIRO PACOTE RIS: 2s
+PACOTES RECEBIDOS DIRETO: 3/34
+PACOTES RECEBIDOS RIS: 23/34
+
+====================================================================================================
+EXECUCAO 17/25
+carros-vlc --potencia=1 --semiAnguloDireto=45 --fovDireto=75 --semiAnguloRIS=60 --fovRIS=30
+----------------------------------------------------------------------------------------------------
+TEMPO PRIMEIRO PACOTE DIRETO: 20s
+TEMPO PRIMEIRO PACOTE RIS: 17s
+PACOTES RECEBIDOS DIRETO: 3/34
+PACOTES RECEBIDOS RIS: 8/34
+
+====================================================================================================
+EXECUCAO 18/25
+carros-vlc --potencia=1 --semiAnguloDireto=45 --fovDireto=60 --semiAnguloRIS=60 --fovRIS=45
+----------------------------------------------------------------------------------------------------
+TEMPO PRIMEIRO PACOTE DIRETO: nenhum pacote detectado
+TEMPO PRIMEIRO PACOTE RIS: 19s
+PACOTES RECEBIDOS DIRETO: 0/34
+PACOTES RECEBIDOS RIS: 6/34
+
+====================================================================================================
+EXECUCAO 19/25
+carros-vlc --potencia=1 --semiAnguloDireto=45 --fovDireto=45 --semiAnguloRIS=60 --fovRIS=60
+----------------------------------------------------------------------------------------------------
+TEMPO PRIMEIRO PACOTE DIRETO: nenhum pacote detectado
+TEMPO PRIMEIRO PACOTE RIS: 21s
+PACOTES RECEBIDOS DIRETO: 0/34
+PACOTES RECEBIDOS RIS: 4/34
+
+====================================================================================================
+EXECUCAO 20/25
+carros-vlc --potencia=1 --semiAnguloDireto=45 --fovDireto=30 --semiAnguloRIS=60 --fovRIS=90
+----------------------------------------------------------------------------------------------------
+TEMPO PRIMEIRO PACOTE DIRETO: nenhum pacote detectado
+TEMPO PRIMEIRO PACOTE RIS: 21s
+PACOTES RECEBIDOS DIRETO: 0/34
+PACOTES RECEBIDOS RIS: 4/34
+
+====================================================================================================
+EXECUCAO 21/25
+carros-vlc --potencia=1 --semiAnguloDireto=30 --fovDireto=90 --semiAnguloRIS=90 --fovRIS=15
+----------------------------------------------------------------------------------------------------
+TEMPO PRIMEIRO PACOTE DIRETO: 19s
+TEMPO PRIMEIRO PACOTE RIS: 16s
 PACOTES RECEBIDOS DIRETO: 4/34
 PACOTES RECEBIDOS RIS: 9/34
+
+====================================================================================================
+EXECUCAO 22/25
+carros-vlc --potencia=1 --semiAnguloDireto=30 --fovDireto=75 --semiAnguloRIS=90 --fovRIS=30
+----------------------------------------------------------------------------------------------------
+TEMPO PRIMEIRO PACOTE DIRETO: 19s
+TEMPO PRIMEIRO PACOTE RIS: 19s
+PACOTES RECEBIDOS DIRETO: 4/34
+PACOTES RECEBIDOS RIS: 6/34
+
+====================================================================================================
+EXECUCAO 23/25
+carros-vlc --potencia=1 --semiAnguloDireto=30 --fovDireto=60 --semiAnguloRIS=90 --fovRIS=45
+----------------------------------------------------------------------------------------------------
+TEMPO PRIMEIRO PACOTE DIRETO: nenhum pacote detectado
+TEMPO PRIMEIRO PACOTE RIS: 21s
+PACOTES RECEBIDOS DIRETO: 0/34
+PACOTES RECEBIDOS RIS: 4/34
+
+====================================================================================================
+EXECUCAO 24/25
+carros-vlc --potencia=1 --semiAnguloDireto=30 --fovDireto=45 --semiAnguloRIS=90 --fovRIS=60
+----------------------------------------------------------------------------------------------------
+TEMPO PRIMEIRO PACOTE DIRETO: nenhum pacote detectado
+TEMPO PRIMEIRO PACOTE RIS: 22s
+PACOTES RECEBIDOS DIRETO: 0/34
+PACOTES RECEBIDOS RIS: 3/34
+
+====================================================================================================
+EXECUCAO 25/25
+carros-vlc --potencia=1 --semiAnguloDireto=30 --fovDireto=30 --semiAnguloRIS=90 --fovRIS=90
+----------------------------------------------------------------------------------------------------
+TEMPO PRIMEIRO PACOTE DIRETO: nenhum pacote detectado
+TEMPO PRIMEIRO PACOTE RIS: 22s
+PACOTES RECEBIDOS DIRETO: 0/34
+PACOTES RECEBIDOS RIS: 3/34
+
+
+Execuçoes 12, 17, 21 e 22

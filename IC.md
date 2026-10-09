@@ -67,6 +67,17 @@ Para gerar a posição dos veículos ao longo do tempo rodar:
 Para gerar o arquivo que o ns3 consegue ler com os carros sendo representados por nodos usar: `/usr/bin/python3 $SUMO_HOME/tools/traceExporter.py     --fcd-input sumoTrace.xml     --ns2mobility-output mobility.tcl`
 
 ## Simulação Final
+A simulação completa utiliza o arquivo de mobilidade gerado, depois o instala nos carros. O RIS é criado na posição fixa (201.6, -1.6) e tem três canais com dois dispositivos únicos cada. 
+
+- Direto: CHANNEL_DIRECT = TX_DIRECT -> RX_DIRECT
+- Com RIS: TX_TO_RIS -> RIS_RX -> RIS_TX -> RX_FROM_RIS
+
+As funções agendadas são:
+1. Carro envia pacotes para RIS
+2. Para cada aumento do goodput do receptor do RIS envia um pacote do seu transmissor.
+3. Imprime-se ao receber em ambos os receptores.
+
+
 - Atualemente o módulo de vlc faz o cálculo considerando potência e ganho de transmissão e recepção, mas desconsidera LOS, é necessário adpatar para considerar o ângulo de transmissão e recepção.
 - `vlc-channel-model.cc ` foi alterado para considerar os ângulos
 

@@ -21,13 +21,17 @@ using namespace std;
 int pacotesEnviadosDireto = 0;
 int pacotesEnviadosRIS = 0;
 
+// Segundo da primeira verificacao com bytes recebidos; -1 indica nao detectado.
+int tempoPrimeiroDireto = -1;
+int tempoPrimeiroRIS = -1;
+
 // Cria um transmissor com a configuracao padrao usada neste experimento.
 static void CreateVlcTransmitter (
     VlcDeviceHelper &deviceHelper,
     const string &name,
-    double peakPower = 0.01,
-    double azimuth=0,
-    double semiAngle=15.0)
+    double peakPower,
+    double azimuth,
+    double semiAngle)
 {
   deviceHelper.CreateTransmitter (name);
   deviceHelper.SetTXSignal (name, 1000, 0.5, 0, peakPower, 0);
@@ -43,8 +47,8 @@ static void CreateVlcTransmitter (
 static void CreateVlcReceiver (
     VlcDeviceHelper &deviceHelper,
     const string &name,
-    double azimuth = 90.0,
-    double fovAngle = 7.5)
+    double azimuth,
+    double fovAngle)
 {
   deviceHelper.CreateReceiver (name);
   deviceHelper.SetReceiverParameter (name, "FilterGain", 1);
@@ -107,8 +111,10 @@ static void SyncVlcPosition (Ptr<Node> node, Ptr<VlcNetDevice> device) {
 static void SendVlcPacket (Ptr<VlcTxNetDevice> tx, string nomerRx) {
     if(nomerRx == "TX_DIRECT") {
         pacotesEnviadosDireto++;
+
     } else if(nomerRx == "TX_TO_RIS") {
         pacotesEnviadosRIS++;
+
     }
 
     Ptr<Packet> packet = Create<Packet> (512); // pacote de 512 bytes
@@ -142,17 +148,42 @@ static void ForwardPacketsFromRis (Ptr<VlcRxNetDevice> risReceiver, Ptr<VlcTxNet
                         risReceiver, risTransmitter);
 }
 
-static void PrintVlcMetrics (Ptr<VlcRxNetDevice> rx, string receiverName) {
-    cout << "t=" << Simulator::Now ().GetSeconds ()
-            << " goodput acumulado em " << receiverName << " = "
-            << rx->ComputeGoodPut () << " bytes"
-            << endl;
+static void PrintVlcMetrics (Ptr<VlcRxNetDevice> rx, string receiverName, int *tempoPrimeiro) {
+    const int receivedBytes = rx->ComputeGoodPut ();
+    if (*tempoPrimeiro == -1 && receivedBytes > 0) {
+        *tempoPrimeiro =  Simulator::Now ().GetSeconds ();
+    }
 
-    Simulator::Schedule (Seconds (1.0), &PrintVlcMetrics, rx, receiverName);
+    // cout << "t=" << Simulator::Now ().GetSeconds ()
+    //         << " goodput acumulado em " << receiverName << " = "
+    //         << receivedBytes << " bytes"
+    //         << endl;
+
+    Simulator::Schedule (Seconds (1.0), &PrintVlcMetrics, rx, receiverName, tempoPrimeiro);
 }
 
 
-int main() {
+int main(int argc, char *argv[]) {
+    double potencia = 1.0;
+    double semiAnguloDireto = 30.0;
+    double fovDireto = 90.0;
+    double semiAnguloRIS = 30.0;
+    double fovRIS = 90.0;
+
+    CommandLine cmd;
+    cmd.AddValue ("potencia", "Potencia de transmissao",
+                  potencia);
+    cmd.AddValue ("semiAnguloDireto", "Semiangulo do transmissor direto",
+                  semiAnguloDireto);
+    cmd.AddValue ("fovDireto", "FOV do receptor direto",
+                  fovDireto);
+    cmd.AddValue ("semiAnguloRIS", "Semiangulo do transmissor do carro e do RIS",
+                  semiAnguloRIS);
+    cmd.AddValue ("fovRIS", "FOV do receptor do carro e do RIS",
+                  fovRIS);
+    cmd.Parse (argc, argv);
+
+
     NodeContainer carros;
 
     carros.Create(2);
@@ -177,16 +208,16 @@ int main() {
 
     // Enlace direto: carro transmissor -> carro receptor.
     // A geometria do enlace direto exige um feixe um pouco maior e FOV amplo.
-    CreateVlcTransmitter (devHelperVPPM, "TX_DIRECT", 1, 0, 30);
-    CreateVlcReceiver (devHelperVPPM, "RX_DIRECT", 90, 90);
+    CreateVlcTransmitter (devHelperVPPM, "TX_DIRECT", potencia, 0, semiAnguloDireto);
+    CreateVlcReceiver (devHelperVPPM, "RX_DIRECT", 90, fovDireto);
 
     // Primeiro salto do RIS: carro transmissor -> receptor do RIS.
-    CreateVlcTransmitter (devHelperVPPM, "TX_TO_RIS");
-    CreateVlcReceiver (devHelperVPPM, "RIS_RX", 180);
+    CreateVlcTransmitter (devHelperVPPM, "TX_TO_RIS", potencia, 0, semiAnguloRIS);
+    CreateVlcReceiver (devHelperVPPM, "RIS_RX", 180, fovRIS);
 
     // Segundo salto do RIS: transmissor do RIS -> carro receptor.
-    CreateVlcTransmitter (devHelperVPPM, "RIS_TX", 0.01, 270);
-    CreateVlcReceiver (devHelperVPPM, "RX_FROM_RIS");
+    CreateVlcTransmitter (devHelperVPPM, "RIS_TX", potencia, 270, semiAnguloRIS);
+    CreateVlcReceiver (devHelperVPPM, "RX_FROM_RIS", 90.0, fovRIS);
 
     devHelperVPPM.SetTrasmitterPosition ("RIS_TX", 201.6, -1.6, 0);
     devHelperVPPM.SetReceiverPosition ("RIS_RX", 201.6, -1.6, 0);
@@ -219,20 +250,33 @@ int main() {
 
     Simulator::Schedule (Seconds (1.0), &ForwardPacketsFromRis, devHelperVPPM.GetReceiver ("RIS_RX"), devHelperVPPM.GetTransmitter ("RIS_TX"));
 
-    Simulator::Schedule (Seconds (1.0), &PrintVlcMetrics, devHelperVPPM.GetReceiver ("RX_DIRECT"), "Receptor carro direto");
-    // Simulator::Schedule (Seconds (1.0), &PrintVlcMetrics, devHelperVPPM.GetReceiver ("RIS_RX"), "Receptor RIS");
-    Simulator::Schedule (Seconds (1.0), &PrintVlcMetrics, devHelperVPPM.GetReceiver ("RX_FROM_RIS"), "Receptor carro com RIS");
+    Simulator::Schedule (Seconds (1.0), &PrintVlcMetrics, devHelperVPPM.GetReceiver ("RX_DIRECT"), "Receptor carro direto", &tempoPrimeiroDireto);
+    Simulator::Schedule (Seconds (1.0), &PrintVlcMetrics, devHelperVPPM.GetReceiver ("RX_FROM_RIS"), "Receptor carro com RIS", &tempoPrimeiroRIS);
 
     Simulator::Stop(Seconds (35.0)); // para garantir que vai parar
 
     Simulator::Run();
-    Simulator::Destroy();
 
     const int diretoRecebidos = devHelperVPPM.GetReceiver ("RX_DIRECT")->ComputeGoodPut () / 512;
     const int risRecebidos = devHelperVPPM.GetReceiver ("RX_FROM_RIS")->ComputeGoodPut () / 512;
 
+    cout << "TEMPO PRIMEIRO PACOTE DIRETO: ";
+    if (tempoPrimeiroDireto == -1) {
+        cout << "nenhum pacote detectado" << endl;
+    } else {
+        cout << tempoPrimeiroDireto << "s" << endl;
+    }
+
+    cout << "TEMPO PRIMEIRO PACOTE RIS: ";
+    if (tempoPrimeiroRIS == -1) {
+        cout << "nenhum pacote detectado" << endl;
+    } else {
+        cout << tempoPrimeiroRIS << "s" << endl;
+    }
+
     cout << "PACOTES RECEBIDOS DIRETO: " << diretoRecebidos << "/" << pacotesEnviadosDireto << endl;
     cout << "PACOTES RECEBIDOS RIS: " << risRecebidos << "/" << pacotesEnviadosRIS << endl;
 
+    Simulator::Destroy();
     return 0;
 }
