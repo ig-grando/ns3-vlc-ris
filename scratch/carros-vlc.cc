@@ -105,7 +105,7 @@ static void SyncVlcPosition (Ptr<Node> node, Ptr<VlcNetDevice> device) {
     Ptr<MobilityModel> nodeMobility = node->GetObject<MobilityModel> ();
     device->SetPosition (nodeMobility->GetPosition ());
 
-    Simulator::Schedule (MilliSeconds (100), &SyncVlcPosition, node, device);
+    Simulator::Schedule (MilliSeconds (10), &SyncVlcPosition, node, device);
 }
 
 static void SendVlcPacket (Ptr<VlcTxNetDevice> tx, string nomerRx) {
@@ -120,7 +120,7 @@ static void SendVlcPacket (Ptr<VlcTxNetDevice> tx, string nomerRx) {
     Ptr<Packet> packet = Create<Packet> (512); // pacote de 512 bytes
     tx->EnqueueDataPacket (packet);
 
-    Simulator::Schedule (Seconds (1.0), &SendVlcPacket, tx, nomerRx);
+    Simulator::Schedule (MilliSeconds (5), &SendVlcPacket, tx, nomerRx);
 
 }
 
@@ -132,9 +132,8 @@ static void ForwardPacketsFromRis (Ptr<VlcRxNetDevice> risReceiver, Ptr<VlcTxNet
     {
       Ptr<Packet> packet = Create<Packet> (512);
 
-      // 100 ms aproximam o atraso de chegada usado pelo vlcnew;
-      // 1 ms representa o processamento do repetidor.
-      Simulator::Schedule (MilliSeconds (101),
+      // Espera de 1 ms apos detectar o pacote pelo goodput.
+      Simulator::Schedule (MilliSeconds (1),
                            &VlcTxNetDevice::EnqueueDataPacket,
                            risTransmitter, packet);
 
@@ -144,7 +143,7 @@ static void ForwardPacketsFromRis (Ptr<VlcRxNetDevice> risReceiver, Ptr<VlcTxNet
     }
 
 
-  Simulator::Schedule (MilliSeconds (10), &ForwardPacketsFromRis,
+  Simulator::Schedule (MilliSeconds (1), &ForwardPacketsFromRis,
                         risReceiver, risTransmitter);
 }
 

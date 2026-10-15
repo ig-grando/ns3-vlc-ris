@@ -5,8 +5,8 @@ carros-vlc --potencia=1 --semiAnguloDireto=90 --fovDireto=90 --semiAnguloRIS=15 
 ----------------------------------------------------------------------------------------------------
 TEMPO PRIMEIRO PACOTE DIRETO: 21s
 TEMPO PRIMEIRO PACOTE RIS: 2s
-PACOTES RECEBIDOS DIRETO: 3/34
-PACOTES RECEBIDOS RIS: 23/34
+PACOTES RECEBIDOS DIRETO: 21/340
+PACOTES RECEBIDOS RIS: 220/340
 
 ====================================================================================================
 EXECUCAO 2/25
@@ -14,8 +14,8 @@ carros-vlc --potencia=1 --semiAnguloDireto=90 --fovDireto=75 --semiAnguloRIS=15 
 ----------------------------------------------------------------------------------------------------
 TEMPO PRIMEIRO PACOTE DIRETO: 21s
 TEMPO PRIMEIRO PACOTE RIS: 2s
-PACOTES RECEBIDOS DIRETO: 3/34
-PACOTES RECEBIDOS RIS: 23/34
+PACOTES RECEBIDOS DIRETO: 23/340
+PACOTES RECEBIDOS RIS: 220/340
 
 ====================================================================================================
 EXECUCAO 3/25
@@ -23,8 +23,8 @@ carros-vlc --potencia=1 --semiAnguloDireto=90 --fovDireto=60 --semiAnguloRIS=15 
 ----------------------------------------------------------------------------------------------------
 TEMPO PRIMEIRO PACOTE DIRETO: 23s
 TEMPO PRIMEIRO PACOTE RIS: 2s
-PACOTES RECEBIDOS DIRETO: 1/34
-PACOTES RECEBIDOS RIS: 23/34
+PACOTES RECEBIDOS DIRETO: 10/340
+PACOTES RECEBIDOS RIS: 220/340
 
 ====================================================================================================
 EXECUCAO 4/25
@@ -32,8 +32,8 @@ carros-vlc --potencia=1 --semiAnguloDireto=90 --fovDireto=45 --semiAnguloRIS=15 
 ----------------------------------------------------------------------------------------------------
 TEMPO PRIMEIRO PACOTE DIRETO: 23s
 TEMPO PRIMEIRO PACOTE RIS: 2s
-PACOTES RECEBIDOS DIRETO: 1/34
-PACOTES RECEBIDOS RIS: 23/34
+PACOTES RECEBIDOS DIRETO: 6/340
+PACOTES RECEBIDOS RIS: 220/340
 
 ====================================================================================================
 EXECUCAO 5/25
@@ -41,8 +41,8 @@ carros-vlc --potencia=1 --semiAnguloDireto=90 --fovDireto=30 --semiAnguloRIS=15 
 ----------------------------------------------------------------------------------------------------
 TEMPO PRIMEIRO PACOTE DIRETO: 23s
 TEMPO PRIMEIRO PACOTE RIS: 2s
-PACOTES RECEBIDOS DIRETO: 1/34
-PACOTES RECEBIDOS RIS: 23/34
+PACOTES RECEBIDOS DIRETO: 3/340
+PACOTES RECEBIDOS RIS: 218/340
 
 ====================================================================================================
 EXECUCAO 6/25
@@ -50,8 +50,8 @@ carros-vlc --potencia=1 --semiAnguloDireto=75 --fovDireto=90 --semiAnguloRIS=30 
 ----------------------------------------------------------------------------------------------------
 TEMPO PRIMEIRO PACOTE DIRETO: 21s
 TEMPO PRIMEIRO PACOTE RIS: 2s
-PACOTES RECEBIDOS DIRETO: 2/34
-PACOTES RECEBIDOS RIS: 23/34
+PACOTES RECEBIDOS DIRETO: 25/340
+PACOTES RECEBIDOS RIS: 220/340
 
 ====================================================================================================
 EXECUCAO 7/25
@@ -59,80 +59,80 @@ carros-vlc --potencia=1 --semiAnguloDireto=75 --fovDireto=75 --semiAnguloRIS=30 
 ----------------------------------------------------------------------------------------------------
 TEMPO PRIMEIRO PACOTE DIRETO: 21s
 TEMPO PRIMEIRO PACOTE RIS: 2s
-PACOTES RECEBIDOS DIRETO: 2/34
-PACOTES RECEBIDOS RIS: 23/34
+PACOTES RECEBIDOS DIRETO: 28/340
+PACOTES RECEBIDOS RIS: 220/340
 
 ====================================================================================================
 EXECUCAO 8/25
 carros-vlc --potencia=1 --semiAnguloDireto=75 --fovDireto=60 --semiAnguloRIS=30 --fovRIS=45
 ----------------------------------------------------------------------------------------------------
-TEMPO PRIMEIRO PACOTE DIRETO: nenhum pacote detectado
-TEMPO PRIMEIRO PACOTE RIS: 17s
-PACOTES RECEBIDOS DIRETO: 0/34
-PACOTES RECEBIDOS RIS: 8/34
+TEMPO PRIMEIRO PACOTE DIRETO: 23s
+TEMPO PRIMEIRO PACOTE RIS: 15s
+PACOTES RECEBIDOS DIRETO: 9/340
+PACOTES RECEBIDOS RIS: 82/340
 
 ====================================================================================================
 EXECUCAO 9/25
 carros-vlc --potencia=1 --semiAnguloDireto=75 --fovDireto=45 --semiAnguloRIS=30 --fovRIS=60
 ----------------------------------------------------------------------------------------------------
-TEMPO PRIMEIRO PACOTE DIRETO: nenhum pacote detectado
+TEMPO PRIMEIRO PACOTE DIRETO: 23s
 TEMPO PRIMEIRO PACOTE RIS: 17s
-PACOTES RECEBIDOS DIRETO: 0/34
-PACOTES RECEBIDOS RIS: 8/34
+PACOTES RECEBIDOS DIRETO: 5/340
+PACOTES RECEBIDOS RIS: 66/340
 
 ====================================================================================================
 EXECUCAO 10/25
 carros-vlc --potencia=1 --semiAnguloDireto=75 --fovDireto=30 --semiAnguloRIS=30 --fovRIS=90
 ----------------------------------------------------------------------------------------------------
-TEMPO PRIMEIRO PACOTE DIRETO: nenhum pacote detectado
-TEMPO PRIMEIRO PACOTE RIS: 19s
-PACOTES RECEBIDOS DIRETO: 0/34
-PACOTES RECEBIDOS RIS: 6/34
+TEMPO PRIMEIRO PACOTE DIRETO: 23s
+TEMPO PRIMEIRO PACOTE RIS: 18s
+PACOTES RECEBIDOS DIRETO: 2/340
+PACOTES RECEBIDOS RIS: 58/340
 
 ====================================================================================================
 EXECUCAO 11/25
 carros-vlc --potencia=1 --semiAnguloDireto=60 --fovDireto=90 --semiAnguloRIS=45 --fovRIS=15
 ----------------------------------------------------------------------------------------------------
-TEMPO PRIMEIRO PACOTE DIRETO: 21s
+TEMPO PRIMEIRO PACOTE DIRETO: 20s
 TEMPO PRIMEIRO PACOTE RIS: 2s
-PACOTES RECEBIDOS DIRETO: 2/34
-PACOTES RECEBIDOS RIS: 23/34
+PACOTES RECEBIDOS DIRETO: 29/340
+PACOTES RECEBIDOS RIS: 220/340
 
 ====================================================================================================
 EXECUCAO 12/25
 carros-vlc --potencia=1 --semiAnguloDireto=60 --fovDireto=75 --semiAnguloRIS=45 --fovRIS=30
 ----------------------------------------------------------------------------------------------------
-TEMPO PRIMEIRO PACOTE DIRETO: 21s
-TEMPO PRIMEIRO PACOTE RIS: 16s
-PACOTES RECEBIDOS DIRETO: 2/34
-PACOTES RECEBIDOS RIS: 9/34
+TEMPO PRIMEIRO PACOTE DIRETO: 20s
+TEMPO PRIMEIRO PACOTE RIS: 15s
+PACOTES RECEBIDOS DIRETO: 29/340
+PACOTES RECEBIDOS RIS: 82/340
 
 ====================================================================================================
 EXECUCAO 13/25
 carros-vlc --potencia=1 --semiAnguloDireto=60 --fovDireto=60 --semiAnguloRIS=45 --fovRIS=45
 ----------------------------------------------------------------------------------------------------
-TEMPO PRIMEIRO PACOTE DIRETO: nenhum pacote detectado
-TEMPO PRIMEIRO PACOTE RIS: 19s
-PACOTES RECEBIDOS DIRETO: 0/34
-PACOTES RECEBIDOS RIS: 6/34
+TEMPO PRIMEIRO PACOTE DIRETO: 23s
+TEMPO PRIMEIRO PACOTE RIS: 18s
+PACOTES RECEBIDOS DIRETO: 7/340
+PACOTES RECEBIDOS RIS: 59/340
 
 ====================================================================================================
 EXECUCAO 14/25
 carros-vlc --potencia=1 --semiAnguloDireto=60 --fovDireto=45 --semiAnguloRIS=45 --fovRIS=60
 ----------------------------------------------------------------------------------------------------
-TEMPO PRIMEIRO PACOTE DIRETO: nenhum pacote detectado
+TEMPO PRIMEIRO PACOTE DIRETO: 23s
 TEMPO PRIMEIRO PACOTE RIS: 19s
-PACOTES RECEBIDOS DIRETO: 0/34
-PACOTES RECEBIDOS RIS: 6/34
+PACOTES RECEBIDOS DIRETO: 3/340
+PACOTES RECEBIDOS RIS: 48/340
 
 ====================================================================================================
 EXECUCAO 15/25
 carros-vlc --potencia=1 --semiAnguloDireto=60 --fovDireto=30 --semiAnguloRIS=45 --fovRIS=90
 ----------------------------------------------------------------------------------------------------
 TEMPO PRIMEIRO PACOTE DIRETO: nenhum pacote detectado
-TEMPO PRIMEIRO PACOTE RIS: 20s
-PACOTES RECEBIDOS DIRETO: 0/34
-PACOTES RECEBIDOS RIS: 5/34
+TEMPO PRIMEIRO PACOTE RIS: 19s
+PACOTES RECEBIDOS DIRETO: 0/340
+PACOTES RECEBIDOS RIS: 41/340
 
 ====================================================================================================
 EXECUCAO 16/25
@@ -140,8 +140,8 @@ carros-vlc --potencia=1 --semiAnguloDireto=45 --fovDireto=90 --semiAnguloRIS=60 
 ----------------------------------------------------------------------------------------------------
 TEMPO PRIMEIRO PACOTE DIRETO: 20s
 TEMPO PRIMEIRO PACOTE RIS: 2s
-PACOTES RECEBIDOS DIRETO: 3/34
-PACOTES RECEBIDOS RIS: 23/34
+PACOTES RECEBIDOS DIRETO: 32/340
+PACOTES RECEBIDOS RIS: 220/340
 
 ====================================================================================================
 EXECUCAO 17/25
@@ -149,44 +149,44 @@ carros-vlc --potencia=1 --semiAnguloDireto=45 --fovDireto=75 --semiAnguloRIS=60 
 ----------------------------------------------------------------------------------------------------
 TEMPO PRIMEIRO PACOTE DIRETO: 20s
 TEMPO PRIMEIRO PACOTE RIS: 17s
-PACOTES RECEBIDOS DIRETO: 3/34
-PACOTES RECEBIDOS RIS: 8/34
+PACOTES RECEBIDOS DIRETO: 33/340
+PACOTES RECEBIDOS RIS: 66/340
 
 ====================================================================================================
 EXECUCAO 18/25
 carros-vlc --potencia=1 --semiAnguloDireto=45 --fovDireto=60 --semiAnguloRIS=60 --fovRIS=45
 ----------------------------------------------------------------------------------------------------
-TEMPO PRIMEIRO PACOTE DIRETO: nenhum pacote detectado
+TEMPO PRIMEIRO PACOTE DIRETO: 23s
 TEMPO PRIMEIRO PACOTE RIS: 19s
-PACOTES RECEBIDOS DIRETO: 0/34
-PACOTES RECEBIDOS RIS: 6/34
+PACOTES RECEBIDOS DIRETO: 4/340
+PACOTES RECEBIDOS RIS: 48/340
 
 ====================================================================================================
 EXECUCAO 19/25
 carros-vlc --potencia=1 --semiAnguloDireto=45 --fovDireto=45 --semiAnguloRIS=60 --fovRIS=60
 ----------------------------------------------------------------------------------------------------
 TEMPO PRIMEIRO PACOTE DIRETO: nenhum pacote detectado
-TEMPO PRIMEIRO PACOTE RIS: 21s
-PACOTES RECEBIDOS DIRETO: 0/34
-PACOTES RECEBIDOS RIS: 4/34
+TEMPO PRIMEIRO PACOTE RIS: 20s
+PACOTES RECEBIDOS DIRETO: 0/340
+PACOTES RECEBIDOS RIS: 38/340
 
 ====================================================================================================
 EXECUCAO 20/25
 carros-vlc --potencia=1 --semiAnguloDireto=45 --fovDireto=30 --semiAnguloRIS=60 --fovRIS=90
 ----------------------------------------------------------------------------------------------------
 TEMPO PRIMEIRO PACOTE DIRETO: nenhum pacote detectado
-TEMPO PRIMEIRO PACOTE RIS: 21s
-PACOTES RECEBIDOS DIRETO: 0/34
-PACOTES RECEBIDOS RIS: 4/34
+TEMPO PRIMEIRO PACOTE RIS: 20s
+PACOTES RECEBIDOS DIRETO: 0/340
+PACOTES RECEBIDOS RIS: 33/340
 
 ====================================================================================================
 EXECUCAO 21/25
 carros-vlc --potencia=1 --semiAnguloDireto=30 --fovDireto=90 --semiAnguloRIS=90 --fovRIS=15
 ----------------------------------------------------------------------------------------------------
 TEMPO PRIMEIRO PACOTE DIRETO: 19s
-TEMPO PRIMEIRO PACOTE RIS: 16s
-PACOTES RECEBIDOS DIRETO: 4/34
-PACOTES RECEBIDOS RIS: 9/34
+TEMPO PRIMEIRO PACOTE RIS: 13s
+PACOTES RECEBIDOS DIRETO: 37/340
+PACOTES RECEBIDOS RIS: 98/340
 
 ====================================================================================================
 EXECUCAO 22/25
@@ -194,35 +194,32 @@ carros-vlc --potencia=1 --semiAnguloDireto=30 --fovDireto=75 --semiAnguloRIS=90 
 ----------------------------------------------------------------------------------------------------
 TEMPO PRIMEIRO PACOTE DIRETO: 19s
 TEMPO PRIMEIRO PACOTE RIS: 19s
-PACOTES RECEBIDOS DIRETO: 4/34
-PACOTES RECEBIDOS RIS: 6/34
+PACOTES RECEBIDOS DIRETO: 37/340
+PACOTES RECEBIDOS RIS: 48/340
 
 ====================================================================================================
 EXECUCAO 23/25
 carros-vlc --potencia=1 --semiAnguloDireto=30 --fovDireto=60 --semiAnguloRIS=90 --fovRIS=45
 ----------------------------------------------------------------------------------------------------
 TEMPO PRIMEIRO PACOTE DIRETO: nenhum pacote detectado
-TEMPO PRIMEIRO PACOTE RIS: 21s
-PACOTES RECEBIDOS DIRETO: 0/34
-PACOTES RECEBIDOS RIS: 4/34
+TEMPO PRIMEIRO PACOTE RIS: 20s
+PACOTES RECEBIDOS DIRETO: 0/340
+PACOTES RECEBIDOS RIS: 33/340
 
 ====================================================================================================
 EXECUCAO 24/25
 carros-vlc --potencia=1 --semiAnguloDireto=30 --fovDireto=45 --semiAnguloRIS=90 --fovRIS=60
 ----------------------------------------------------------------------------------------------------
 TEMPO PRIMEIRO PACOTE DIRETO: nenhum pacote detectado
-TEMPO PRIMEIRO PACOTE RIS: 22s
-PACOTES RECEBIDOS DIRETO: 0/34
-PACOTES RECEBIDOS RIS: 3/34
+TEMPO PRIMEIRO PACOTE RIS: 21s
+PACOTES RECEBIDOS DIRETO: 0/340
+PACOTES RECEBIDOS RIS: 27/340
 
 ====================================================================================================
 EXECUCAO 25/25
 carros-vlc --potencia=1 --semiAnguloDireto=30 --fovDireto=30 --semiAnguloRIS=90 --fovRIS=90
 ----------------------------------------------------------------------------------------------------
 TEMPO PRIMEIRO PACOTE DIRETO: nenhum pacote detectado
-TEMPO PRIMEIRO PACOTE RIS: 22s
-PACOTES RECEBIDOS DIRETO: 0/34
-PACOTES RECEBIDOS RIS: 3/34
-
-
-Execuçoes 12, 17, 21 e 22
+TEMPO PRIMEIRO PACOTE RIS: 21s
+PACOTES RECEBIDOS DIRETO: 0/340
+PACOTES RECEBIDOS RIS: 25/340

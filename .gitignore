@@ -6,6 +6,6 @@
 !/scratch/**
 
 !/src/
-!/saida.txt
+!/*.txt
 
 !/sumo-arquivos/
