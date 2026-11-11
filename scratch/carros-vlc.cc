@@ -143,7 +143,7 @@ static void ForwardPacketsFromRis (Ptr<VlcRxNetDevice> risReceiver, Ptr<VlcTxNet
     }
 
 
-  Simulator::Schedule (MilliSeconds (1), &ForwardPacketsFromRis,
+  Simulator::Schedule (MilliSeconds (500), &ForwardPacketsFromRis,
                         risReceiver, risTransmitter);
 }
 
@@ -201,7 +201,7 @@ int main(int argc, char *argv[]) {
     MobilityHelper risMobility;
     risMobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
     risMobility.Install (ris);
-    ris.Get (0)->GetObject<MobilityModel> ()->SetPosition (Vector (201.6, -1.6, 0));
+    ris.Get (0)->GetObject<MobilityModel> ()->SetPosition (Vector (0,  0, 0));
 
     VlcDeviceHelper devHelperVPPM; //VLC Device Helper to manage the VLC Device and device properties.
 
@@ -218,8 +218,8 @@ int main(int argc, char *argv[]) {
     CreateVlcTransmitter (devHelperVPPM, "RIS_TX", potencia, 270, semiAnguloRIS);
     CreateVlcReceiver (devHelperVPPM, "RX_FROM_RIS", 90.0, fovRIS);
 
-    devHelperVPPM.SetTrasmitterPosition ("RIS_TX", 201.6, -1.6, 0);
-    devHelperVPPM.SetReceiverPosition ("RIS_RX", 201.6, -1.6, 0);
+    devHelperVPPM.SetTrasmitterPosition ("RIS_TX", 0,  0, 0);
+    devHelperVPPM.SetReceiverPosition ("RIS_RX", 0,  0, 0);
 
     VlcChannelHelper chHelper;
     CreateVlcChannel (chHelper, devHelperVPPM, "CHANNEL_DIRECT", "TX_DIRECT", "RX_DIRECT");
