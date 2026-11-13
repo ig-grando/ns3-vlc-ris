@@ -13,6 +13,7 @@
 #include "ns3/random-variable-stream.h"
 #include "ns3/pointer.h"
 #include "ns3/log.h"
+#include "ns3/traced-callback.h"
 
 namespace ns3 {
 
@@ -136,6 +137,7 @@ private:
 	ns3::Ptr<ns3::VlcErrorModel> m_error;
 	std::vector<Ptr<Packet> > dataPool;
 	std::vector<bool> packetCorruptionState;
+	TracedCallback<Ptr<const Packet> > m_rxGoodPacket;
 	Ptr<VlcChannel> m_channel;
 };
 

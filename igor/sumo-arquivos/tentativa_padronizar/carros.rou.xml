@@ -5,6 +5,6 @@
 
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
     <!-- Vehicles, persons and containers (sorted by depart) -->
-    <trip id="t_0" depart="9.00" departSpeed="max" from="E17" to="E18"/>
-    <trip id="t_1" depart="10.00" departSpeed="max" from="E15" to="E16"/>
+    <trip id="t_0" depart="0.00" departSpeed="max" from="E17" to="E18"/>
+    <trip id="t_1" depart="0.00" departSpeed="max" from="E15" to="E16"/>
 </routes>

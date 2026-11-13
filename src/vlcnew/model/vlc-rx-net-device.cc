@@ -36,7 +36,10 @@ ns3::TypeId VlcRxNetDevice::GetTypeId(void)	// returns meta-information about Vl
 			MakeDoubleAccessor(&VlcRxNetDevice::m_bias),
 			MakeDoubleChecker<double>())
 
-			;
+			.AddTraceSource("RxGoodPacket",
+				"A VLC data packet was received without corruption.",
+				MakeTraceSourceAccessor(&VlcRxNetDevice::m_rxGoodPacket),
+				"ns3::Packet::TracedCallback");
 
 	return tid;
 
@@ -239,6 +242,9 @@ void VlcRxNetDevice::EnqueueDataPacketAfterCorruption(Ptr<Packet> p,
 	NS_LOG_FUNCTION(this<<p<<corruptFlag);
 	this->dataPool.push_back(p);
 	this->packetCorruptionState.push_back(corruptFlag);
+	if (!corruptFlag) {
+		m_rxGoodPacket(p);
+	}
 }
 
 int VlcRxNetDevice::ComputeGoodPut() {

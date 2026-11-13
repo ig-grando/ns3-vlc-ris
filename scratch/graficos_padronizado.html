@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Primeiro pacote recebido</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #f2f5f8; color: #172b3a; font: 16px/1.5 Inter, system-ui, sans-serif; }
+  main { max-width: 1180px; margin: auto; padding: 32px 20px; }
+  h1 { font-size: 1.5rem; line-height: 1.2; margin: 0 0 12px; }
+  p { margin: 0 0 16px; }
+  .painel { margin-bottom: 16px; padding: 20px; background: white; border: 1px solid #dce4eb; border-radius: 12px; }
+  .rolagem { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+  th, td { padding: 8px; text-align: center; white-space: nowrap; }
+  thead, tbody th { background: #eaf0f5; }
+  .dados td { border-bottom: 1px solid #e0e8ef; }
+  .dados tbody tr:nth-child(even) { background: #f6f8fa; }
+</style>
+<main>
+  
+        <section class="painel">
+          <h1>Primeiro pacote recebido</h1>
+          <p>O instante é contado desde o início da simulação. TX e RX são os carros
+             transmissor e receptor. Um travessão indica ausência de recepção.</p>
+          <div class="rolagem">
+            <table class="dados">
+              <thead>
+                <tr>
+                  <th scope="col" rowspan="2">Ângulo do carro</th>
+                  <th scope="col" rowspan="2">Ângulo do RIS</th>
+                  <th scope="colgroup" colspan="3">Direto</th>
+                  <th scope="colgroup" colspan="3">Via RIS</th>
+                </tr>
+                <tr>
+        <th scope="col">Instante (s)</th>
+        <th scope="col">TX à origem (m)</th>
+        <th scope="col">RX à origem (m)</th>
+    
+        <th scope="col">Instante (s)</th>
+        <th scope="col">TX à origem (m)</th>
+        <th scope="col">RX à origem (m)</th>
+    </tr>
+              </thead>
+              <tbody><tr><th scope="row">30°</th><td>15°</td><td>—</td><td>—</td><td>—</td><td>1,001</td><td>96,8902</td><td>96,8888</td></tr><tr><th scope="row">30°</th><td>30°</td><td>—</td><td>—</td><td>—</td><td>1,001</td><td>96,8902</td><td>96,8888</td></tr><tr><th scope="row">30°</th><td>45°</td><td>—</td><td>—</td><td>—</td><td>2,651</td><td>80,6832</td><td>78,5325</td></tr><tr><th scope="row">30°</th><td>60°</td><td>—</td><td>—</td><td>—</td><td>4,031</td><td>66,5939</td><td>62,8176</td></tr><tr><th scope="row">30°</th><td>90°</td><td>—</td><td>—</td><td>—</td><td>5,311</td><td>54,4632</td><td>48,1125</td></tr><tr><th scope="row">45°</th><td>15°</td><td>—</td><td>—</td><td>—</td><td>1,001</td><td>96,8902</td><td>96,8888</td></tr><tr><th scope="row">45°</th><td>30°</td><td>—</td><td>—</td><td>—</td><td>2,651</td><td>80,6832</td><td>78,5325</td></tr><tr><th scope="row">45°</th><td>45°</td><td>—</td><td>—</td><td>—</td><td>4,821</td><td>59,0494</td><td>53,5825</td></tr><tr><th scope="row">45°</th><td>60°</td><td>—</td><td>—</td><td>—</td><td>6,141</td><td>46,7505</td><td>39,0057</td></tr><tr><th scope="row">45°</th><td>90°</td><td>—</td><td>—</td><td>—</td><td>6,721</td><td>41,2405</td><td>32,3241</td></tr><tr><th scope="row">60°</th><td>15°</td><td>7,61</td><td>32,8072</td><td>22,461</td><td>1,001</td><td>96,8902</td><td>96,8888</td></tr><tr><th scope="row">60°</th><td>30°</td><td>7,61</td><td>32,8072</td><td>22,461</td><td>4,001</td><td>66,8804</td><td>63,1683</td></tr><tr><th scope="row">60°</th><td>45°</td><td>7,61</td><td>32,8072</td><td>22,461</td><td>6,141</td><td>46,7505</td><td>39,0057</td></tr><tr><th scope="row">60°</th><td>60°</td><td>7,61</td><td>32,8072</td><td>22,461</td><td>7,031</td><td>38,2961</td><td>28,7721</td></tr><tr><th scope="row">60°</th><td>90°</td><td>7,61</td><td>32,8072</td><td>22,461</td><td>7,561</td><td>33,2717</td><td>22,9951</td></tr><tr><th scope="row">75°</th><td>15°</td><td>8,38</td><td>25,6102</td><td>14,8318</td><td>1,001</td><td>96,8902</td><td>96,8888</td></tr><tr><th scope="row">75°</th><td>30°</td><td>8,38</td><td>25,6102</td><td>14,8318</td><td>4,821</td><td>59,0494</td><td>53,5825</td></tr><tr><th scope="row">75°</th><td>45°</td><td>8,38</td><td>25,6102</td><td>14,8318</td><td>6,721</td><td>41,2405</td><td>32,3241</td></tr><tr><th scope="row">75°</th><td>60°</td><td>8,38</td><td>25,6102</td><td>14,8318</td><td>7,391</td><td>34,8833</td><td>24,8481</td></tr><tr><th scope="row">75°</th><td>90°</td><td>8,38</td><td>25,6102</td><td>14,8318</td><td>7,961</td><td>29,4797</td><td>18,6351</td></tr><tr><th scope="row">90°</th><td>15°</td><td>8,88</td><td>21,0052</td><td>10,3868</td><td>1,341</td><td>93,5411</td><td>93,0808</td></tr><tr><th scope="row">90°</th><td>30°</td><td>8,88</td><td>21,0052</td><td>10,3868</td><td>5,851</td><td>49,4682</td><td>42,2481</td></tr><tr><th scope="row">90°</th><td>45°</td><td>8,88</td><td>21,0052</td><td>10,3868</td><td>7,391</td><td>34,8833</td><td>24,8481</td></tr><tr><th scope="row">90°</th><td>60°</td><td>8,88</td><td>21,0052</td><td>10,3868</td><td>8,161</td><td>27,6272</td><td>16,7787</td></tr><tr><th scope="row">90°</th><td>90°</td><td>8,88</td><td>21,0052</td><td>10,3868</td><td>8,551</td><td>24,0353</td><td>13,3116</td></tr></tbody>
+            </table>
+          </div>
+        </section>
+    
+</main>
+</html>
