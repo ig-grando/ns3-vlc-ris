@@ -39,6 +39,8 @@ As funções agendadas são:
 
 - Um pacote é enviado a cada 10ms
 
+https://docs.google.com/spreadsheets/d/1mBb2M0FSP_i4I9zUq-5B-Xlbg24znxVZBqEvP3StujY/edit?usp=sharing
+
 
 ## Rodar testes
 - `python3.11 scratch/rodar_simulacoes.py`
